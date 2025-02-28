@@ -2,6 +2,6 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <h1 className="text-3xl font-bold underline">Hello World</h1>
+    <h1 className="bg-background-primary">Hello World</h1>
   );
 }
