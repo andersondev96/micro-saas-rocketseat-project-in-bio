@@ -1,7 +1,15 @@
 import Image from "next/image";
+import Hero from "./components/landing-page/hero";
 
 export default function Home() {
   return (
-    <h1 className="bg-background-primary">Hello World</h1>
+    <h1 className="max-w-7xl mx-auto border">
+      <Hero />
+     {/*  <Header />
+      <Hero />
+      <VideoExplanation />
+      <Pricing />
+      <FAQ /> */}
+    </h1>
   );
 }
