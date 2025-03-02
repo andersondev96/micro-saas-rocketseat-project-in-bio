@@ -1,4 +1,5 @@
-import { TotalVisits } from "../commons/total-visits";
+import ProjectCard from "../commons/project-card";
+import TotalVisits from "../commons/total-visits";
 import UserCard from "../commons/user-card";
 import Button from "../ui/button";
 import TextInput from "../ui/text-input";
@@ -13,28 +14,29 @@ export default function Hero() {
         <h2 className="text-xl leading-6">
           Crie sua própria página de projetos e compartilhe eles com o mundo.
           <br />
-          Acompanhe o engajamento com Analytics e cliques
-          </h2>
-          <div className="flex items-center gap-2 w-full mt-[10vh]">
-            <span className="text-white text-xl">projectinbio.com</span>
-            <TextInput placeholder="Seu link"/>
-            <Button>Criar agora</Button>
-          </div>
-          </div>
-          <div className="w-full flex items-center justify-center bg-[radial-gradient(circle_at_50%_50%,#4B2DBB,transparent_55%)]">
-            <div className="relative">
-              <UserCard />
-              <div className="absolute -bottom-[7%] -right-[45%]">
-                <TotalVisits />
-              </div>
-              <div className="absolute top-[20%] -left-[45%] -z-10">
-               {/*  <ProjectCard /> */}
-              </div>
-              <div className="absolute -top-[5%] -left-[55%] -z-10">
-               {/*  <ProjectCard /> */}
-              </div>
-            </div>
-          </div>
+          Acompanhe o engajamento com Analytics de cliques
+        </h2>
+        <div className="flex items-center gap-2 w-full mt-[10vh]">
+          <span className="text-white text-xl">projectinbio.com</span>
+          <TextInput placeholder="Seu link" />
+          <Button>Criar agora</Button>
+        </div>
       </div>
-  )
+
+      <div className="w-full flex items-center justify-center bg-[radial-gradient(circle_at_50%_50%,#4B2DBB,transparent_55%)]">
+        <div className="relative">
+          <UserCard />
+          <div className="absolute -bottom-[7%] -right-[45%]">
+            <TotalVisits />
+          </div>
+          <div className="absolute top-[20%] -left-[45%] -z-10">
+            <ProjectCard />
+          </div>
+          <div className="absolute -top-[5%] -left-[55%] -z-10">
+            <ProjectCard />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
