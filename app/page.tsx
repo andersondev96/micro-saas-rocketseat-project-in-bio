@@ -1,5 +1,7 @@
 import Header from "./components/landing-page/header";
 import Hero from "./components/landing-page/hero";
+import Pricing from "./components/landing-page/pricing";
+import VideoExplanation from "./components/landing-page/video-explanation";
 
 export default function Home() {
   return (
@@ -7,10 +9,12 @@ export default function Home() {
       <Header />
       <div className="pt-28">
         <Hero />
+        <VideoExplanation />
+        <Pricing />
       </div>
 
-      {/* <VideoExplanation />
-      <Pricing />
+      {/* 
+      
       <FAQ /> */}
     </div>
   );
