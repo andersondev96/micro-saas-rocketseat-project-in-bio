@@ -1,4 +1,6 @@
-import { cert, initializeApp } from "firebase-admin/app";
+import { cert, getApps, initializeApp } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
+import { getStorage } from "firebase-admin/storage";
 import "server-only";
 
 // Certificado
@@ -12,7 +14,13 @@ export const firebaseCert = cert({
 });
 
 // Instância do app
-initializeApp({
-  credential: firebaseCert,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-});
+if (!getApps().length) {
+  initializeApp({
+    credential: firebaseCert,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  });
+}
+
+export const db = getFirestore();
+
+export const storage = getStorage().bucket();
