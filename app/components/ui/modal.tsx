@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import useOnClickOutside from "@/app/hooks/useOnClickOutside";
 import { useRef } from "react";
@@ -6,10 +6,10 @@ import { useRef } from "react";
 export default function Modal({
   children,
   isOpen,
-  setIsOpen
+  setIsOpen,
 }: {
-  children: React.ReactNode,
-  isOpen: boolean,
+  children: React.ReactNode;
+  isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -21,8 +21,8 @@ export default function Modal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-[#787878]/10 flex items-center justify-center backdrop:blur-md z-50">
+    <div className="fixed inset-0 bg-[#787878]/10 flex items-center justify-center backdrop-blur-md z-50">
       <div ref={ref}>{children}</div>
-    </div>  
-  )
+    </div>
+  );
 }
