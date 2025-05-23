@@ -26,18 +26,19 @@ export async function createProject(formData: FormData) {
 
   try {
     await db
-      .collection("projects")
+      .collection("profiles")
       .doc(profileId)
       .collection("projects")
       .doc(generatedId)
       .set({
-      userId: session.user?.id,
-      projectName,
-      projectDescription,
-      projectUrl,
-      imagePath,
-      createdAt: Timestamp.now().toMillis()
-    });
+        id: generatedId,
+        userId: session.user?.id,
+        projectName,
+        projectDescription,
+        projectUrl,
+        imagePath,
+        createdAt: Timestamp.now().toMillis()
+      });
     return true;
   } catch (error) {
     console.log(error);
