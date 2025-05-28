@@ -1,5 +1,4 @@
 import { loadStripe, Stripe } from "@stripe/stripe-js";
-import { create } from "domain";
 import { useEffect, useState } from "react";
 
 export function useStripe() {
@@ -20,8 +19,8 @@ export function useStripe() {
     metadata,
     isSubscription,
   }: {
-    metadata: any,
-    isSubscription: boolean
+    metadata: any;
+    isSubscription: boolean;
   }) {
     try {
       const response = await fetch("/api/stripe/create-checkout", {
@@ -42,7 +41,17 @@ export function useStripe() {
     }
   }
 
-  return {
-    createStripeCheckout,
-  };
+  async function handleCreateStripePortal() {
+    const response = await fetch("/api/stripe/create-portal", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+
+    window.location.href = data.url;
+  }
+
+  return { createStripeCheckout, handleCreateStripePortal };
 }
