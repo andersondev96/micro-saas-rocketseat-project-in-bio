@@ -18,26 +18,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Customer not found" }, { status: 404 });
   }
 
-  const origin = request.headers.get("origin");
-
-  if (!origin) {
-    return NextResponse.json({ error: "Missing origin header" }, { status: 400 });
-  }
-
   try {
     const portalSession = await stripe.billingPortal.sessions.create({
       customer: customerId,
-      return_url: origin,
+      return_url: `${request.headers.get("origin")}`,
     });
 
-    console.log("Portal session URL:", portalSession.url);
-
-    if (!portalSession.url) {
-      return NextResponse.json({ error: "Failed to create portal session" }, { status: 500 });
-    }
-
     return NextResponse.json({ url: portalSession.url });
-
   } catch (error) {
     console.error(error);
     return NextResponse.json(

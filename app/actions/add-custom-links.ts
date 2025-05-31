@@ -1,6 +1,6 @@
 "use server";
 
-import { auth } from "firebase-admin";
+import { auth } from "../lib/auth";
 import { db } from "../lib/firebase";
 
 export type Link = {
@@ -30,6 +30,6 @@ export default async function addCustomLinks({
       link3,
     })
   } catch (err) {
-
+    console.log(err);
   }
 }

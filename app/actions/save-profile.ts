@@ -2,9 +2,8 @@
 
 import { randomUUID } from "crypto";
 import { db, storage } from "../lib/firebase";
-import { buffer } from "stream/consumers";
 import { Timestamp } from "firebase-admin/firestore";
-import { auth } from "firebase-admin";
+import { auth } from "../lib/auth";
 
 export async function saveProfile(formData: FormData) {
 
@@ -18,7 +17,7 @@ export async function saveProfile(formData: FormData) {
     const yourDescription = formData.get("yourDescription") as string;
     const file = formData.get("profilePic") as File;
 
-    let imagePath = null
+    let imagePath = null;
 
     const hasFile = file && file.size > 0
 

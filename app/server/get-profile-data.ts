@@ -1,6 +1,7 @@
-import "server-only"
-import { db } from "../lib/firebase"
-import type { Link } from "../actions/add-custom-links";
+"use server";
+
+import { Link } from "../actions/add-custom-links";
+import { db } from "../lib/firebase";
 
 export type ProfileData = {
   userId: string;
@@ -28,7 +29,7 @@ export type ProjectData = {
   projectDescription: string;
   projectUrl: string;
   imagePath: string;
-  createdAt: number;
+  createdAt: string;
   totalVisits?: number;
 };
 
@@ -45,16 +46,16 @@ export async function getProfileProjects(profileId: string) {
     .collection("projects")
     .get();
 
-  return snapshot.docs.map((doc) => doc.data()) as ProjectData[];
+  return snapshot.docs.map((doc) => doc.data() as ProjectData);
 }
 
-export async function getProfileId(userId: string) {
-  if (!userId) return null
+export async function getProfileId(userId?: string) {
+  if (!userId) return null;
 
   const snapshot = await db
     .collection("profiles")
     .where("userId", "==", userId)
     .get();
-    
+
   return snapshot.docs.map((doc) => doc.id)[0];
 }

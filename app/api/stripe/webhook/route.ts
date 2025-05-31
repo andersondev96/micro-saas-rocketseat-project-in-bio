@@ -1,7 +1,7 @@
 import { db } from "@/app/lib/firebase";
 import stripe from "@/app/lib/stripe";
 import { NextResponse, type NextRequest } from "next/server";
-import type Stripe from "stripe";
+import Stripe from "stripe";
 
 export async function POST(req: NextRequest) {
   try {
@@ -21,7 +21,6 @@ export async function POST(req: NextRequest) {
         // Usuário completou o checkout - assinatura ou pagamento único
         if (event.data.object.payment_status === "paid") {
           const userId = event.data.object.client_reference_id;
-
           if (userId) {
             await db.collection("users").doc(userId).update({
               isSubscribed: true,
@@ -39,9 +38,6 @@ export async function POST(req: NextRequest) {
             console.log("Enviar e-mail para o cliente com o boleto")
           }
         }
-
-
-        console.log("Usuário completou o checkout");
         break;
       case "checkout.session.async_payment_succeeded":
         // Usuário pagou o boleto
@@ -71,7 +67,6 @@ export async function POST(req: NextRequest) {
             });
           }
         }
-
         break;
     }
 

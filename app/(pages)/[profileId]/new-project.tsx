@@ -75,10 +75,18 @@ export default function NewProject({ profileId }: { profileId: string }) {
                     className="object-cover object-center" 
                   />
                 ) : (
-                  <button onClick={() => triggerImageInput("imageInput")} className="w-full h-full">100x100</button>
+                  <button 
+                    onClick={() => triggerImageInput("imageInput")} 
+                    className="w-full h-full"
+                  >
+                    100x100
+                  </button>
                 )}
               </div>
-              <button className="text-white flex items-center gap-2" onClick={() => triggerImageInput("imageInput")}>
+              <button 
+                className="text-white flex items-center gap-2"
+                onClick={() => triggerImageInput("imageInput")}
+              >
                 <ArrowUpFromLine className="size-4" />
                 <span>Adicionar imagem</span>
               </button>

@@ -6,7 +6,9 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const { metadata, isSubscription } = await req.json();
 
-  const price = isSubscription ? process.env.STRIPE_SUBSCRIPTION_PRICE_ID : process.env.STRIPE_PRICE_ID;
+  const price = isSubscription 
+  ? process.env.STRIPE_SUBSCRIPTION_PRICE_ID 
+  : process.env.STRIPE_PRICE_ID;
 
   const userSession = await auth();
 
@@ -21,7 +23,7 @@ export async function POST(req: Request) {
   const userRef = db.collection("users").doc(userId || "");
   const userDoc = await userRef.get();
 
-  let customerId
+  let customerId;
 
   if (userDoc.exists) {
     customerId = userDoc.data()?.customerId;
@@ -37,6 +39,7 @@ export async function POST(req: Request) {
     });
     
     customerId = newCustomer.id;
+    
     await userRef.update({ customerId });
   }
 

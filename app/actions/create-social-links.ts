@@ -2,7 +2,6 @@
 
 import { Timestamp } from "firebase-admin/firestore";
 import { db } from "../lib/firebase";
-import { error } from "console";
 import { auth } from "firebase-admin";
 
 export async function createSocialLinks({
@@ -20,7 +19,7 @@ export async function createSocialLinks({
 }) {
   const session = await auth()
 
-  if (!session) return false;
+  if (!session) return;
 
   try {
     await db.collection("profiles").doc(profileId).update({
@@ -34,7 +33,7 @@ export async function createSocialLinks({
     });
     return true;
   } catch (err) {
-    console.error(error);
+    console.error(err);
     return true;
   }
 }
