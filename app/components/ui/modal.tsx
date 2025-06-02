@@ -14,7 +14,7 @@ export default function Modal({
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
-  useOnClickOutside(ref, () => {
+  useOnClickOutside(ref as React.RefObject<HTMLDivElement>, () => {
     setIsOpen(false);
   });
 
