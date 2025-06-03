@@ -8,6 +8,12 @@ import { notFound, redirect } from "next/navigation";
 import NewProject from "./new-project";
 import { getDownloadURLFromPath } from "@/app/lib/firebase";
 import { increaseProfileVisits } from "@/app/actions/increase-profile-visits";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ProjectInBio - Perfil",
+  description: "ProjectInBio - Perfil",
+};
 
 export default async function ProfilePage({
   params,

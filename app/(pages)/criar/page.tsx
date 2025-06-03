@@ -4,6 +4,12 @@ import TextInput from "@/app/components/ui/text-input";
 import { Rocket } from "lucide-react";
 import CreateLinkForm from "./create-link-form";
 import { trackServerEvent } from "@/app/lib/mixpanel";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ProjectInBio - Criar",
+  description: "ProjectInBio - Criar",
+};
 
 export default function CriarPage() {
   trackServerEvent("page_view", {
